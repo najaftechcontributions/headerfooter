@@ -8,7 +8,10 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap"
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
 		rel="stylesheet">
 
 	<style>
@@ -20,7 +23,7 @@
 
 		body {
 			margin: 0;
-			font-family: 'Raleway', sans-serif;
+			font-family: "Raleway", sans-serif;
 		}
 
 		header {
@@ -31,18 +34,23 @@
 
 		.top-bar {
 			background: var(--navy);
-			color: #fff;
+			color: var(--yellow);
 			text-align: center;
 			font-size: 14px;
 			padding: 12px 15px;
-			font-weight: 600;
+			font-weight: 700;
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 		}
 
+		.top-bar>div {
+			width: 100%;
+			text-align: center;
+		}
+
 		.top-bar a {
-			color: #fff;
+			color: var(--yellow);
 			font-weight: 700;
 		}
 
@@ -51,15 +59,24 @@
 			text-decoration: none;
 		}
 
+		.top-bar form {
+			max-width: 411px;
+			width: 100%;
+		}
+
 		.top-bar input {
-			width: fit-content;
-			max-width: 250px;
+			width: 100% !important;
 			max-height: 50px;
 			padding: 10px 15px !important;
+			border-radius: 5px !important;
+			color: #000 !important;
 		}
 
 		.main-nav {
-			background: var(--yellow);
+			background-color: var(--yellow);
+			background: url(https://munchkinsports.com/wp-content/uploads/2024/12/munchkinsss-scaled.jpg);
+			background-position: center;
+			background-size: 100% auto;
 			padding: 15px 0;
 		}
 
@@ -69,8 +86,8 @@
 
 		.navbar-nav .nav-link {
 			color: var(--navy) !important;
-			font-weight: 800;
-			padding: 15px 18px !important;
+			font-weight: 600;
+			padding: 15px 15px !important;
 			font-size: 14px;
 		}
 
@@ -82,21 +99,20 @@
 		@media(min-width:1025px) {
 
 			.dropdown-menu {
-				display: block;
+				display: block !important;
 				opacity: 0;
 				visibility: hidden;
 				transition: 0.25s ease;
-				margin-top: 20px;
 				background: var(--navy);
 				border-radius: 18px;
 				border: none;
 				padding: 35px;
-				min-width: 700px;
 			}
 
+			.dropdown-submenu:hover>.dropdown-menu,
 			.dropdown:hover>.dropdown-menu {
-				opacity: 1;
-				visibility: visible;
+				opacity: 1 !important;
+				visibility: visible !important;
 			}
 
 			.mega-row {
@@ -181,35 +197,14 @@
 				flex-direction: column;
 				gap: 20px;
 			}
-			
-			.mega-title {
-				color: var(--yellow);
-				font-weight: 800;
-				margin-bottom: 18px;
-			}
-
-			.dropdown-item {
-				color: #fff;
-				padding: 6px 0;
-				font-weight: 600;
-			}
-
-			.dropdown-item:hover {
-				background: transparent;
-				color: var(--yellow);
-			}
 		}
 
 		.header-social a {
 			width: 38px;
-			height: 38px;
-			background: var(--navy);
-			color: #fff;
+			color: var(--navy);
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			border-radius: 50%;
-			margin-left: 10px;
 			transition: 0.2s;
 		}
 
@@ -241,6 +236,21 @@
 		.footer-box a {
 			color: #fff;
 			font-size: 14px;
+		}
+
+		.contact-us svg {
+			width: 14px;
+			height: 14px;
+			fill: #ffffff;
+			margin-top: 5px;
+		}
+
+		.contact-us p,
+		.contact-us a {
+			font-family: "Open Sans", sans-serif;
+			display: flex;
+			align-items: flex-start;
+			gap: 10px;
 		}
 
 		.footer-box a:hover {
@@ -310,7 +320,8 @@
 			text-align: center;
 			margin-top: 60px;
 			color: var(--navy);
-			font-weight: 600;
+			font-weight: 400;
+			font-size: 14px;
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
@@ -338,41 +349,127 @@
 				flex-direction: column;
 				gap: 15px;
 			}
-			.top-bar input { 
+
+			.top-bar input {
 				display: none;
 			}
 		}
 
 		@media (max-width: 1200px) {
 			.container {
-				max-width: 1140px;
+				max-width: 1270px;
+			}
+		}
+
+		@media (min-width: 1200px) {
+			.container {
+				max-width: 1270px;
+			}
+		}
+
+		/* Nested Dropdown Styling */
+		.dropdown-menu.level-1 {
+			min-width: 300px;
+		}
+
+		.dropdown-submenu {
+			position: relative;
+		}
+
+		.dropdown-submenu>.dropdown-menu {
+			top: 0;
+			left: calc(100% + 20px);
+			margin-left: 0;
+			margin-top: 0;
+			border-radius: 18px;
+		}
+
+		@media (min-width:1025px) {
+
+			.dropdown-menu {
+				display: none;
+				background: var(--navy);
+				padding: 20px;
+			}
+
+			.dropdown:hover>.dropdown-menu {
+				display: block;
+			}
+
+			.dropdown-submenu:hover>.dropdown-menu {
+				display: block;
+			}
+
+			.dropdown-item {
+				color: #fff;
+				font-weight: 600;
+				text-wrap: nowrap;
+				display: flex;
+				align-items: center;
+				gap: 5px;
+			}
+
+			.dropdown-item:hover {
+				color: var(--yellow);
+				background: transparent;
+			}
+		}
+
+		@media (max-width:1024px) {
+			.dropdown-menu {
+				display: none;
+			}
+
+			.mobile-close {
+				display: flex !important;
+				margin-left: auto !important;
+			}
+
+			.dropdown-menu.show,
+			.navbar-toggler {
+				display: block !important;
+			}
+
+			.navbar-nav {
+				flex-direction: column !important;
+			}
+
+			.navbar-collapse {
+				align-items: flex-start;
+				flex-direction: column !important;
+				transition: all 0.2s ease-in-out;
 			}
 		}
 	</style>
 </head>
 
 <body>
-
-	<header>
-
-		<div class="top-bar">
-			<div>
+	<div class="top-bar">
+		<div>
 			For support call:
 			<a href="tel:02086583777">020 8658 3777</a> |
 			Email:
 			<a href="mailto:admin@munchkinsports.com">admin@munchkinsports.com</a>
-			</div>
-			<input type="text" class="custom-input mb-0" placeholder="Search....">
 		</div>
 
+		<form action="https://munchkinsports.com/" method="get">
+			<input type="text" name="swps" class="custom-input mb-0" placeholder="Search....">
+		</form>
+	</div>
+	<header>
 		<div class="main-nav">
 			<div class="container-fluid">
 				<div class="row align-items-center">
 
+					<!-- Logo -->
 					<div class="col-lg-2 col-6 logo">
-						<img src="https://munchkinsports.com/wp-content/uploads/2024/12/logo.png">
+						<a href="https://munchkinsports.com/">
+							<img src="https://munchkinsports.com/wp-content/uploads/2024/12/logo.png"
+								alt="Munchkin Sports">
+						</a>
 					</div>
 
+					<!-- Navigation -->
 					<div class="col-lg-8 col-6">
 						<nav class="navbar navbar-expand-lg p-0">
 							<button class="navbar-toggler ml-auto" id="menuToggle">
@@ -382,114 +479,271 @@
 							<div class="collapse navbar-collapse" id="mainNav">
 
 								<div class="mobile-close d-lg-none">
-									<button id="closeMenu"><i class="fas fa-times"></i>
+									<button id="closeMenu">
+										<i class="fas fa-times"></i>
 									</button>
 								</div>
 
 								<ul class="navbar-nav mx-auto">
 
-									<li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
+									<!-- HOME -->
+									<li class="nav-item">
+										<a class="nav-link" href="https://munchkinsports.com/">HOME</a>
+									</li>
 
+									<!-- HOLIDAY CAMPS -->
 									<li class="nav-item dropdown">
+										<a class="nav-link" href="#">
+											HOLIDAY CAMPS
+											<i class="fas fa-chevron-down"></i>
+										</a>
+										<div class="dropdown-menu">
+											<a class="dropdown-item"
+												href="https://munchkinsports.com/our-holiday-camps/">Our Camps</a>
+											<a class="dropdown-item"
+												href="https://munchkinsports.com/book-a-holiday-camp-london/">Book
+												Holiday Camps</a>
+										</div>
+									</li>
+
+									<!-- WEEKEND CLASSES -->
+									<li class="nav-item dropdown">
+										<a class="nav-link" href="https://munchkinsports.com/weekend-classes/">
+											WEEKEND CLASSES
+											<i class="fas fa-chevron-down"></i>
+										</a>
+										<div class="dropdown-menu">
+											<a class="dropdown-item"
+												href="https://munchkinsports.com/rugby-munchkins/">Rugby Munchkins</a>
+											<a class="dropdown-item"
+												href="https://munchkinsports.com/football-munchkin/">Football
+												Munchkins</a>
+											<a class="dropdown-item"
+												href="https://munchkinsports.com/multi-sports-munchkins/">Multi-sports
+												Munchkins</a>
+											<a class="dropdown-item"
+												href="https://munchkinsports.com/netball-munchkins/">Netball
+												Munchkins</a>
+										</div>
+									</li>
+
+									<!-- BEFORE & AFTER SCHOOL CLUBS -->
+									<li class="nav-item dropdown has-megamenu">
 										<a class="nav-link" href="#">
 											BEFORE & AFTER SCHOOL CLUBS
 											<i class="fas fa-chevron-down"></i>
 										</a>
 
+										<ul class="dropdown-menu level-1">
+
+											<!-- A-O -->
+											<li class="dropdown-submenu">
+												<a class="dropdown-item" href="#">
+													Book After School Clubs (A–O)
+													<i class="fas fa-chevron-right float-right"></i>
+												</a>
+
+												<ul class="dropdown-menu level-2">
+													<li><a class="dropdown-item" href="#">Babington House School</a>
+													</li>
+													<li><a class="dropdown-item" href="#">Balgowan Primary School</a>
+													</li>
+													<li><a class="dropdown-item" href="#">Bickley Park School</a></li>
+												</ul>
+											</li>
+
+											<!-- P-Z -->
+											<li class="dropdown-submenu">
+												<a class="dropdown-item" href="#">
+													Book After School Clubs (P–Z)
+													<i class="fas fa-chevron-right float-right"></i>
+												</a>
+
+												<ul class="dropdown-menu level-2">
+
+													<li><a class="dropdown-item" href="#">Parish CE Primary School</a>
+													</li>
+
+													<!-- ST CHRISTOPHER -->
+													<li class="dropdown-submenu">
+														<a class="dropdown-item" href="#">
+															St Christopher’s The Hall
+															<i class="fas fa-chevron-right float-right"></i>
+														</a>
+
+														<ul class="dropdown-menu level-3">
+															<li><a class="dropdown-item" href="#">Autumn Term</a></li>
+															<li><a class="dropdown-item" href="#">Football</a></li>
+															<li><a class="dropdown-item" href="#">Multisports</a></li>
+															<li><a class="dropdown-item" href="#">Netball</a></li>
+															<li><a class="dropdown-item" href="#">Hockey</a></li>
+															<li><a class="dropdown-item" href="#">Lego</a></li>
+															<li><a class="dropdown-item" href="#">Tennis</a></li>
+														</ul>
+													</li>
+
+													<!-- ST DUNSTAN -->
+													<li class="dropdown-submenu">
+														<a class="dropdown-item" href="#">
+															St Dunstan’s College
+															<i class="fas fa-chevron-right float-right"></i>
+														</a>
+
+														<ul class="dropdown-menu level-3">
+															<li><a class="dropdown-item" href="#">Michaelmas 2025</a>
+															</li>
+															<li><a class="dropdown-item" href="#">Football</a></li>
+															<li><a class="dropdown-item" href="#">Hockey</a></li>
+															<li><a class="dropdown-item" href="#">Multisports</a></li>
+															<li><a class="dropdown-item" href="#">Netball</a></li>
+															<li><a class="dropdown-item" href="#">Rugby</a></li>
+														</ul>
+													</li>
+
+												</ul>
+											</li>
+
+											<li><a class="dropdown-item" href="#">Book Wraparound Care</a></li>
+											<li><a class="dropdown-item" href="#">After School & Wrap Around Care
+													FAQs</a></li>
+
+										</ul>
+									</li>
+
+									<!-- FOR SCHOOLS -->
+									<li class="nav-item dropdown">
+										<a class="nav-link" href="#">
+											FOR SCHOOLS
+											<i class="fas fa-chevron-down"></i>
+										</a>
 										<div class="dropdown-menu">
-											<div class="mega-row">
-
-												<div>
-													<div class="mega-title">Book Clubs</div>
-													<a class="dropdown-item" href="#">After School Clubs (A-O)</a>
-													<a class="dropdown-item" href="#">After School Clubs (P-Z)</a>
-													<a class="dropdown-item" href="#">Wraparound Care</a>
-													<a class="dropdown-item" href="#">FAQs</a>
-												</div>
-
-												<div>
-													<div class="mega-title">Schools</div>
-													<a class="dropdown-item" href="#">Babington House</a>
-													<a class="dropdown-item" href="#">Balgowan Primary</a>
-													<a class="dropdown-item" href="#">Bickley Park</a>
-													<a class="dropdown-item" href="#">Blackheath Prep</a>
-												</div>
-
-											</div>
+											<a class="dropdown-item"
+												href="https://munchkinsports.com/our-work-in-schools/">Our Work in
+												Schools</a>
+											<a class="dropdown-item"
+												href="https://munchkinsports.com/become-a-host-school/">Become a Host
+												School</a>
 										</div>
 									</li>
 
-									<li class="nav-item"><a class="nav-link" href="#">PARTIES</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">WORK FOR US</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">SHOP</a></li>
+									<!-- PARTIES -->
+									<li class="nav-item">
+										<a class="nav-link" href="https://munchkinsports.com/parties/">PARTIES</a>
+									</li>
+
+									<!-- WORK FOR US -->
+									<li class="nav-item">
+										<a class="nav-link" href="https://munchkinsports.com/work-for-us/">WORK FOR
+											US</a>
+									</li>
+
+									<!-- SHOP -->
+									<li class="nav-item">
+										<a class="nav-link" href="https://munchkinsports.com/shop/">SHOP</a>
+									</li>
 
 								</ul>
 							</div>
 						</nav>
 					</div>
 
+					<!-- Social -->
 					<div class="col-lg-2 d-none d-lg-block">
 						<div class="header-social d-flex justify-content-end">
-							<a href="#"><i class="fab fa-facebook-f"></i></a>
-							<a href="#"><i class="fab fa-instagram"></i></a>
-							<a href="#"><i class="fab fa-linkedin-in"></i></a>
+							<a href="https://www.facebook.com/munchkinsports" target="_blank"><i
+									class="fab fa-facebook-f"></i></a>
+							<a href="https://www.instagram.com/munchkinsports_" target="_blank"><i
+									class="fab fa-instagram"></i></a>
+							<a href="https://linkedin.com/company/munchkin-sports" target="_blank"><i
+									class="fab fa-linkedin-in"></i></a>
 						</div>
 					</div>
 
 				</div>
 			</div>
 		</div>
-
 	</header>
-
 	<main style="height:600px;"></main>
+	<footer class="px-3">
 
-	<footer>
-
-		<div class="container">
-			<div class="footer-box">
-
+		<div class="footer-box">
+			<div class="container">
 				<div class="scroll-circle" onclick="window.scrollTo({top:0,behavior:'smooth'})">
 					<i class="fas fa-chevron-up"></i>
 				</div>
 
 				<div class="row">
 
-					<div class="col-lg-4">
+					<div class="col-lg-4 contact-us">
 						<h4>Contact Us</h4>
-						<p>Munchkin Sports<br>Catford, London</p>
-						<p>admin@munchkinsports.com<br>020 8658 3777</p>
+						<p><svg aria-hidden="true" class="e-font-icon-svg e-fas-map-marker-alt" viewBox="0 0 384 512"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z">
+								</path>
+							</svg>
+							Munchkin Sports<br>
+							Groundsman's House, St Dunstan’s Jubilee Ground,<br>
+							Canadian Avenue, Catford, SE6 4SW
+						</p>
+						<p><svg aria-hidden="true" class="e-font-icon-svg e-fas-envelope" viewBox="0 0 512 512"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
+								</path>
+							</svg>
+							<a href="mailto:admin@munchkinsports.com">admin@munchkinsports.com</a><br>
+						</p>
+						<p><svg aria-hidden="true" class="e-font-icon-svg e-fas-phone-alt" viewBox="0 0 512 512"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z">
+								</path>
+							</svg>
+							<a href="tel:02086583777">020 8658 3777</a>
+						</p>
 					</div>
 
 					<div class="col-lg-4 quick-links">
 						<h4>Quick Links</h4>
-						<a href="#"><i class="fas fa-angle-right"></i> Policies & Procedures</a>
-						<a href="#"><i class="fas fa-angle-right"></i> Terms & Conditions</a>
-						<a href="#"><i class="fas fa-angle-right"></i> Contact Us</a>
+						<a href="https://munchkinsports.com/policies-and-procedures/"><i class="fas fa-angle-right"></i>
+							Policies & Procedures</a>
+						<a href="https://munchkinsports.com/terms-condition/"><i class="fas fa-angle-right"></i> Terms &
+							Conditions</a>
+						<a href="https://munchkinsports.com/contact-us/"><i class="fas fa-angle-right"></i> Contact
+							Us</a>
 					</div>
 
 					<div class="col-lg-4 newsletter">
-						<h4>Newsletter</h4>
-						<p>Sign up for latest updates</p>
-						<input type="email" class="custom-input" placeholder="Your Email Address">
-						<button>SUBSCRIBE</button>
+						<h4>Our Newsletter</h4>
+						<p>Sign up to our newsletter for latest offers and updates.</p>
+						<form>
+							<input type="email" class="custom-input" placeholder="Your Email Address">
+							<button type="submit">Subscribe</button>
+						</form>
 					</div>
 
 				</div>
 
 			</div>
-
+		</div>
+		<div class="container">
 			<div class="footer-bottom">
-				© 2025 Munchkin Sports. All rights reserved.
+				© 2025 Munchkin Sports. All rights reserved. Website built by LdnSocials.
 				<div class="footer-social">
-					<a href="#"><i class="fab fa-facebook-f"></i></a>
-					<a href="#"><i class="fab fa-instagram"></i></a>
-					<a href="#"><i class="fab fa-linkedin-in"></i></a>
-					<a href="#"><i class="fab fa-youtube"></i></a>
+					<a href="https://www.facebook.com/munchkinsports" target="_blank"><i
+							class="fab fa-facebook-f"></i></a>
+					<a href="https://www.instagram.com/munchkinsports_" target="_blank"><i
+							class="fab fa-instagram"></i></a>
+					<a href="https://linkedin.com/company/munchkin-sports" target="_blank"><i
+							class="fab fa-linkedin-in"></i></a>
+					<a href="https://x.com/MunchkinSports_" target="_blank"><i class="fab fa-x-twitter"></i></a>
+					<a href="https://www.youtube.com/channel/UCuzWmfQra7DeDnbx3YyMCWQ" target="_blank"><i
+							class="fab fa-youtube"></i></a>
 				</div>
 			</div>
-
 		</div>
+
 
 	</footer>
 
@@ -498,14 +752,15 @@
 		document.getElementById('menuToggle').onclick = () => menu.classList.add('show');
 		document.getElementById('closeMenu').onclick = () => menu.classList.remove('show');
 
-		document.querySelectorAll('.dropdown > .nav-link').forEach(link => {
-			link.addEventListener('click', function (e) {
+		document.querySelectorAll('.dropdown-submenu > a').forEach(el => {
+			el.addEventListener('click', function (e) {
 				if (window.innerWidth <= 1024) {
 					e.preventDefault();
-					this.parentElement.classList.toggle('show');
+					this.nextElementSibling.classList.toggle('show');
 				}
 			});
 		});
+
 	</script>
 
 </body>
