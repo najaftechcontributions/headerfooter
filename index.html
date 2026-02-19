@@ -16,7 +16,7 @@
 
 	<style>
 		:root {
-			--navy: #0A2A5E;
+			--navy: rgb(9, 33, 77);
 			--yellow: #FFD600;
 			--white: #ffffff;
 		}
@@ -132,7 +132,8 @@
 			color: var(--navy) !important;
 			font-weight: 700;
 			padding: 15px 15px !important;
-			font-size: 14px;
+			font-size: 13px !important;
+			letter-spacing: 1.5px;
 		}
 
 		.navbar-nav .nav-link i {
@@ -197,6 +198,8 @@
 				white-space: normal;
 				word-break: break-word;
 				line-height: 1.4;
+				letter-spacing: 1.5px;
+				font-size: 14px;
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
@@ -230,7 +233,18 @@
 				flex-wrap: wrap;
 			}
 
-			.logo {
+			.navbar-expand-lg .navbar-toggler {
+				display: block;
+			}
+
+			.navbar-expand-lg .navbar-collapse,
+			.navbar-expand-lg .navbar-nav {
+				flex-direction: column;
+			}
+
+			.logo,
+			.logo img {
+				width: 140px;
 				max-width: 140px;
 			}
 
@@ -257,9 +271,11 @@
 			}
 
 			.mobile-close {
-				text-align: right;
+				align-items: center;
+				justify-content: space-between;
 				margin-bottom: 20px;
-				display: block !important;
+				display: flex !important;
+				width: 100%;
 			}
 
 			.mobile-close button {
@@ -268,7 +284,8 @@
 				border-radius: 50%;
 				border: none;
 				background: var(--yellow);
-				font-weight: 800;
+				font-size: 18px;
+				color: var(--navy);
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -278,9 +295,19 @@
 
 			.navbar-nav .nav-link {
 				color: #fff !important;
-				border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+				width: 100%;
+				font-size: 14px !important;
 				padding: 15px 0 !important;
 				white-space: normal;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				
+				svg {
+					fill: #fff !important;
+					width: 20px !important;
+					height: 16px !important;
+				}
 			}
 
 			.dropdown-menu {
@@ -308,7 +335,10 @@
 			.navbar-toggler {
 				display: block;
 				background: transparent;
-				border: none;
+				border: 1px solid #000;
+				border-radius: 50%;
+				min-width: 47px;
+				height: 47px;
 				font-size: 24px;
 				color: var(--navy);
 				cursor: pointer;
@@ -349,8 +379,8 @@
 		.footer-box {
 			background: var(--navy);
 			color: #fff;
-			border-radius: 22px;
-			padding: 50px;
+			border-radius: 10px;
+			padding: 60px 60px 80px 60px;
 			position: relative;
 		}
 
@@ -415,13 +445,16 @@
 			border: 1px solid #fff;
 			background: transparent;
 			color: #fff;
-			font-weight: 700;
+			font-size: 12px;
+			font-weight: 600;
 			cursor: pointer;
 			transition: 0.3s;
+			text-transform: uppercase;
+			transition: all 0.2s ease-in-out;
 		}
 
 		.newsletter button:hover {
-			background: var(--yellow);
+			background: var(--white);
 			color: var(--navy);
 		}
 
@@ -437,7 +470,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			box-shadow: 0 0 0px 10px rgb(10 42 94);
+			box-shadow: 0 0 0px 10px var(--navy);
 			cursor: pointer;
 			transition: all 0.2s ease-in-out;
 		}
@@ -470,8 +503,8 @@
 		}
 
 		.footer-social a {
-			width: 45px;
-			height: 45px;
+			width: 36px;
+			height: 36px;
 			background: var(--navy);
 			color: #fff;
 			border-radius: 50%;
@@ -479,7 +512,7 @@
 			align-items: center;
 			justify-content: center;
 			text-decoration: none;
-			font-size: 18px;
+			font-size: 16px;
 			transition: all 0.2s ease-in-out;
 		}
 
@@ -501,7 +534,13 @@
 		@media screen and (max-width:767px) {
 			.footer-bottom {
 				flex-direction: column;
-				gap: 15px;
+				gap: 25px;
+				margin-top: 100px;
+			}
+
+			.footer-box {
+				padding: 30px 15px 70px 15px;
+				border-radius: 10px;
 			}
 
 			.top-bar input {
@@ -517,9 +556,27 @@
 				gap: 10px;
 			}
 
+			.footer-social a {
+				width: 36px;
+				height: 36px;
+				font-size: 14px;
+			}
+
 			.main-nav {
 				background-position: right;
 				background-size: cover;
+			}
+
+			.footer-box h4 {
+				font-weight: 600;
+				font-size: 20px;
+				margin-bottom: 10px;
+			}
+		}
+
+		@media (max-width: 1440px) {
+			.container {
+				max-width: 1290px !important;
 			}
 		}
 	</style>
@@ -558,6 +615,13 @@
 						<div class="collapse navbar-collapse" id="mainNav">
 
 							<div class="mobile-close d-lg-none">
+								<!-- Logo -->
+								<div class="logo">
+									<a href="https://munchkinsports.com/">
+										<img src="https://munchkinsports.com/wp-content/uploads/2024/12/logo.png"
+											alt="Munchkin Sports">
+									</a>
+								</div>
 								<button id="closeMenu">
 									<i class="fas fa-times"></i>
 								</button>
@@ -574,7 +638,13 @@
 								<li class="nav-item dropdown">
 									<a class="nav-link" href="#">
 										HOLIDAY CAMPS
-										<i class="fas fa-chevron-down"></i>
+										<svg fill="#000000" height="12px" width="12.5px" version="1.1" id="Layer_1"
+											xmlns="http://www.w3.org/2000/svg"
+											xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 407.437 407.437"
+											xml:space="preserve">
+											<polygon
+												points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 " />
+										</svg>
 									</a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item"
@@ -587,9 +657,15 @@
 
 								<!-- WEEKEND CLASSES -->
 								<li class="nav-item dropdown">
-									<a class="nav-link" href="https://munchkinsports.com/weekend-classes/">
+									<a class="nav-link" href="#">
 										WEEKEND CLASSES
-										<i class="fas fa-chevron-down"></i>
+										<svg fill="#000000" height="12px" width="12.5px" version="1.1" id="Layer_1"
+											xmlns="http://www.w3.org/2000/svg"
+											xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 407.437 407.437"
+											xml:space="preserve">
+											<polygon
+												points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 " />
+										</svg>
 									</a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item"
@@ -610,7 +686,13 @@
 								<li class="nav-item dropdown has-megamenu">
 									<a class="nav-link" href="#">
 										BEFORE & AFTER SCHOOL CLUBS
-										<i class="fas fa-chevron-down"></i>
+										<svg fill="#000000" height="12px" width="12.5px" version="1.1" id="Layer_1"
+											xmlns="http://www.w3.org/2000/svg"
+											xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 407.437 407.437"
+											xml:space="preserve">
+											<polygon
+												points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 " />
+										</svg>
 									</a>
 
 									<ul class="dropdown-menu level-1">
@@ -619,7 +701,13 @@
 										<li class="dropdown-submenu">
 											<a class="dropdown-item" href="#">
 												Book After School Clubs (A–O)
-												<i class="fas fa-chevron-right float-right"></i>
+												<svg fill="#ffffff" height="12px" width="12.5px" version="1.1"
+													id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+													xmlns:xlink="http://www.w3.org/1999/xlink"
+													viewBox="0 0 407.437 407.437" xml:space="preserve">
+													<polygon
+														points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 " />
+												</svg>
 											</a>
 
 											<ul class="dropdown-menu level-2">
@@ -666,7 +754,13 @@
 										<li class="dropdown-submenu">
 											<a class="dropdown-item" href="#">
 												Book After School Clubs (P–Z)
-												<i class="fas fa-chevron-right float-right"></i>
+												<svg fill="#ffffff" height="12px" width="12.5px" version="1.1"
+													id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+													xmlns:xlink="http://www.w3.org/1999/xlink"
+													viewBox="0 0 407.437 407.437" xml:space="preserve">
+													<polygon
+														points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 " />
+												</svg>
 											</a>
 
 											<ul class="dropdown-menu level-2">
@@ -687,7 +781,13 @@
 												<li class="dropdown-submenu">
 													<a class="dropdown-item" href="#">
 														St Christopher’s The Hall
-														<i class="fas fa-chevron-right float-right"></i>
+														<svg fill="#ffffff" height="12px" width="12.5px" version="1.1"
+															id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+															xmlns:xlink="http://www.w3.org/1999/xlink"
+															viewBox="0 0 407.437 407.437" xml:space="preserve">
+															<polygon
+																points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 " />
+														</svg>
 													</a>
 
 													<ul class="dropdown-menu level-3">
@@ -719,7 +819,13 @@
 												<li class="dropdown-submenu">
 													<a class="dropdown-item" href="#">
 														St Dunstan’s College
-														<i class="fas fa-chevron-right float-right"></i>
+														<svg fill="#ffffff" height="12px" width="12.5px" version="1.1"
+															id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+															xmlns:xlink="http://www.w3.org/1999/xlink"
+															viewBox="0 0 407.437 407.437" xml:space="preserve">
+															<polygon
+																points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 " />
+														</svg>
 													</a>
 
 													<ul class="dropdown-menu level-3">
@@ -777,7 +883,13 @@
 								<li class="nav-item dropdown">
 									<a class="nav-link" href="#">
 										FOR SCHOOLS
-										<i class="fas fa-chevron-down"></i>
+										<svg fill="#000000" height="12px" width="12.5px" version="1.1" id="Layer_1"
+											xmlns="http://www.w3.org/2000/svg"
+											xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 407.437 407.437"
+											xml:space="preserve">
+											<polygon
+												points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 " />
+										</svg>
 									</a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item"
@@ -828,12 +940,17 @@
 		<div class="footer-box">
 			<div class="container">
 				<div class="scroll-circle" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-					<i class="fas fa-chevron-up"></i>
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+						width="25" height="25" viewBox="0 0 20 20">
+						<path fill="#000000"
+							d="M9.146 0.646l-6 6c-0.195 0.195-0.195 0.512 0 0.707s0.512 0.195 0.707 0l5.146-5.146v16.293c0 0.276 0.224 0.5 0.5 0.5s0.5-0.224 0.5-0.5v-16.293l5.146 5.146c0.195 0.195 0.512 0.195 0.707 0 0.098-0.098 0.146-0.226 0.146-0.354s-0.049-0.256-0.146-0.354l-6-6c-0.195-0.195-0.512-0.195-0.707 0z">
+						</path>
+					</svg>
 				</div>
 
 				<div class="row">
 
-					<div class="col-lg-4 contact-us">
+					<div class="col-lg-4 col-md-6 contact-us">
 						<h4>Contact Us</h4>
 						<p><svg aria-hidden="true" class="e-font-icon-svg e-fas-map-marker-alt" viewBox="0 0 384 512"
 								xmlns="http://www.w3.org/2000/svg">
@@ -863,7 +980,7 @@
 						</p>
 					</div>
 
-					<div class="col-lg-4 quick-links">
+					<div class="col-lg-4 col-md-6 px-lg-5 quick-links">
 						<h4>Quick Links</h4>
 						<a href="https://munchkinsports.com/policies-and-procedures/"><i class="fas fa-angle-right"></i>
 							Policies & Procedures</a>
@@ -873,7 +990,7 @@
 							Us</a>
 					</div>
 
-					<div class="col-lg-4 newsletter">
+					<div class="col-md-4 mt-4 px-4 px-md-3 mt-lg-0 newsletter">
 						<h4>Our Newsletter</h4>
 						<p>Sign up to our newsletter for latest offers and updates.</p>
 						<form>
@@ -886,7 +1003,7 @@
 
 			</div>
 		</div>
-		<div class="container">
+		<div class="container px-0 px-md-3">
 			<div class="footer-bottom">
 				© 2025 Munchkin Sports. All rights reserved. Website built by LdnSocials.
 				<div class="footer-social">
