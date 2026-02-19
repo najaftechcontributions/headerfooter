@@ -302,7 +302,7 @@
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
-				
+
 				svg {
 					fill: #fff !important;
 					width: 20px !important;
@@ -319,17 +319,19 @@
 				position: static;
 				float: none;
 				width: 100%;
+				box-shadow: 0px 3px 15px 0px rgba(171.28125000000003, 171.28125000000003, 171.28125000000003, 0.09);
 			}
 
 			.dropdown-menu.show {
 				display: block;
+				position: static !important;
+				float: none;
 			}
 
 			.dropdown-item {
 				color: rgba(255, 255, 255, 0.9);
 				padding: 10px 0;
 				white-space: normal;
-				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 			}
 
 			.navbar-toggler {
@@ -347,6 +349,16 @@
 
 			.header-social {
 				display: none;
+			}
+
+			li.nav-item {
+				flex-direction: column;
+			}
+
+			.dropdown-item:focus,
+			.dropdown-item:hover {
+				background-color: transparent;
+				color: var(--yellow);
 			}
 		}
 
@@ -1032,19 +1044,38 @@
 
 	<script>
 		const menu = document.getElementById('mainNav');
-		document.getElementById('menuToggle').onclick = () => menu.classList.add('show');
-		document.getElementById('closeMenu').onclick = () => menu.classList.remove('show');
 
-		document.querySelectorAll('.dropdown-submenu > a').forEach(el => {
-			el.addEventListener('click', function (e) {
+		document.getElementById('menuToggle').onclick = () => {
+			menu.classList.add('show');
+		};
+
+		document.getElementById('closeMenu').onclick = () => {
+			menu.classList.remove('show');
+		};
+
+		// MOBILE DROPDOWN TOGGLE (Main + Submenus)
+		document.querySelectorAll('.dropdown > .nav-link, .dropdown-submenu > .dropdown-item').forEach(link => {
+			link.addEventListener('click', function (e) {
 				if (window.innerWidth <= 1024) {
 					e.preventDefault();
-					this.nextElementSibling.classList.toggle('show');
+
+					const parent = this.parentElement;
+					const menu = this.nextElementSibling;
+
+					if (menu && menu.classList.contains('dropdown-menu')) {
+
+						// Close siblings
+						parent.parentElement.querySelectorAll('.dropdown-menu.show').forEach(openMenu => {
+							if (openMenu !== menu) openMenu.classList.remove('show');
+						});
+
+						menu.classList.toggle('show');
+					}
 				}
 			});
 		});
-
 	</script>
+
 
 </body>
 
