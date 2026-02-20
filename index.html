@@ -149,7 +149,10 @@
 			transform: translatey(-5px);
 		}
 
-
+		.nav-item.dropdown:has(.show) > a {
+			transform: translate(-5px);
+			color: var(--yellow) !important;
+		}
 		@media(min-width:1025px) {
 			.dropdown-menu {
 				display: block !important;
